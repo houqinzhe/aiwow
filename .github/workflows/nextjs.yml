@@ -1,0 +1,54 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]   # 你主分支名
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'          # 若用 pnpm/yarn 改这里和安装命令
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (Next static export to out/)
+        run: npm run build
+
+      # 可选：为自定义域名写入 CNAME（也可在仓库 Settings->Pages 设置）
+      - name: Add CNAME
+        run: echo "aiwow.shop" > ./out/CNAME
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
