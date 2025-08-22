@@ -170,7 +170,7 @@ export default function Home() {
             </div>
 
             {/* 广告展示区域 */}
-            <div className="text-center">
+            {/* <div className="text-center">
               <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-md">
                 <CardContent className="p-6">
                   <div className="text-sm text-gray-500 mb-3">📢 广告位</div>
@@ -182,7 +182,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
 
             {/* 操作按钮 */}
             <div className="text-center">
