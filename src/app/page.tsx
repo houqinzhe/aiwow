@@ -98,8 +98,8 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">💰 薪资计时器</h1>
-          <p className="text-gray-600">实时计算您的每一分钟价值</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">💰 牛马计时器</h1>
+          <p className="text-gray-600">实时计算牛马每一分钟价值</p>
         </div>
 
         {!isStarted ? (
@@ -152,15 +152,18 @@ export default function Home() {
             </Card>
 
             {/* 薪资信息 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-center text-lg">🎯 当前累计</CardTitle>
+            <div className="flex justify-center">
+              <Card className="max-w-lg border-4 border-orange-300 bg-gradient-to-br from-orange-50 to-yellow-50 shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-center text-2xl font-bold text-orange-700">🎯 当前累计牛马所得</CardTitle>
                 </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-2xl font-mono font-bold text-orange-600">
+                <CardContent className="text-center pb-6">
+                  <div className="text-5xl font-mono font-black text-orange-600 mb-2">
                     {formatCurrency(earnedAmount)}
                   </div>
+                  {/* <div className="text-sm text-orange-500 font-medium">
+                    每分钟 +{formatCurrency(getPerMinuteSalary())}
+                  </div> */}
                 </CardContent>
               </Card>
             </div>
@@ -177,14 +180,14 @@ export default function Home() {
             </div>
 
             {/* 提示信息 */}
-            <Card className="bg-yellow-50 border-yellow-200">
+            {/* <Card className="bg-yellow-50 border-yellow-200">
               <CardContent className="pt-6">
                 <div className="text-center text-yellow-800">
                   <p className="text-lg">🎊 每当累计薪资达到100元时，将自动触发撒花庆祝！</p>
                   <p className="text-sm mt-2">当前进度: {Math.floor(earnedAmount)} / {Math.ceil(earnedAmount / 100) * 100} 元</p>
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         )}
       </div>
