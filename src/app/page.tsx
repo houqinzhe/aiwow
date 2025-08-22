@@ -98,19 +98,21 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">💰 牛马计时器</h1>
+          <div className="inline-block p-4 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg mb-4">
+            <h1 className="text-4xl font-bold text-white">💰 牛马计时器</h1>
+          </div>
           <p className="text-gray-600">实时计算牛马每一分钟价值</p>
         </div>
 
         {!isStarted ? (
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
-              <CardTitle>开始计时</CardTitle>
-              <CardDescription>输入您的月薪开始计算</CardDescription>
+          <Card className="max-w-md mx-auto bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-0 shadow-xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl font-bold text-indigo-800">开始计时</CardTitle>
+              <CardDescription className="text-indigo-600 text-lg">输入您的月薪开始计算</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-6">
               <div>
-                <label htmlFor="salary" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="salary" className="block text-sm font-semibold text-indigo-700 mb-3">
                   月薪 (元)
                 </label>
                 <Input
@@ -119,32 +121,31 @@ export default function Home() {
                   placeholder="请输入您的月薪"
                   value={monthlySalary || ''}
                   onChange={(e) => setMonthlySalary(Number(e.target.value))}
-                  className="text-lg"
+                  className="text-lg text-center border-2 border-indigo-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-300 h-12"
                 />
               </div>
               <Button 
                 onClick={handleStart} 
                 disabled={monthlySalary <= 0}
-                className="w-full"
-                size="lg"
+                className="w-full h-12 text-lg font-bold bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 border-0 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                开始计时
+                🚀 开始计时
               </Button>
             </CardContent>
           </Card>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-10">
             {/* 当前时间显示 */}
-            <Card>
+            <Card className="bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-200 border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-center text-2xl">🕐 当前时间</CardTitle>
+                <CardTitle className="text-center text-2xl text-blue-800">🕐 当前时间</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center">
-                  <div className="text-4xl font-mono font-bold text-blue-600 mb-2">
+                  <div className="text-4xl font-mono font-bold text-blue-700 mb-2">
                     {formatTime(currentTime)}
                   </div>
-                  <div className="text-lg text-gray-600">
+                  <div className="text-lg text-blue-600">
                     {formatDate(currentTime)}
                   </div>
                 </div>
@@ -153,12 +154,12 @@ export default function Home() {
 
             {/* 薪资信息 */}
             <div className="flex justify-center">
-              <Card className="max-w-lg border-4 border-orange-300 bg-gradient-to-br from-orange-50 to-yellow-50 shadow-2xl transform hover:scale-105 transition-all duration-300">
+              <Card className="w-full border-0 bg-gradient-to-br from-emerald-100 via-teal-200 to-cyan-200 shadow-2xl transform hover:scale-105 transition-all duration-300">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-center text-2xl font-bold text-orange-700">🎯 当前累计牛马所得</CardTitle>
+                  <CardTitle className="text-center text-2xl font-bold text-emerald-800">🎯 当前累计牛马所得</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center pb-6">
-                  <div className="text-5xl font-mono font-black text-orange-600 mb-2">
+                  <div className="text-5xl font-mono font-black text-emerald-700 mb-2">
                     {formatCurrency(earnedAmount)}
                   </div>
                   {/* <div className="text-sm text-orange-500 font-medium">
@@ -174,8 +175,9 @@ export default function Home() {
                 onClick={handleReset} 
                 variant="outline" 
                 size="lg"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 border-0 text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 px-8 py-3"
               >
-                重新开始
+                🔄 重新开始
               </Button>
             </div>
 
