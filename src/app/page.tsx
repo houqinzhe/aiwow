@@ -155,29 +155,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-center text-lg">⏱️ 开始时间</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-2xl font-mono font-bold text-green-600">
-                    {startTime ? formatTime(startTime) : '-'}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-center text-lg">💵 每分钟薪资</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-2xl font-mono font-bold text-purple-600">
-                    {formatCurrency(getPerMinuteSalary())}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-center text-lg">🎯 今日累计</CardTitle>
+                  <CardTitle className="text-center text-lg">🎯 当前累计</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
                   <div className="text-2xl font-mono font-bold text-orange-600">
