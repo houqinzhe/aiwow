@@ -21,13 +21,13 @@ export default function Home() {
     const interval = setInterval(() => {
       const now = new Date();
       setCurrentTime(now);
-      
+
       if (startTime) {
         const timeDiff = now.getTime() - startTime.getTime();
         const minutesDiff = timeDiff / (1000 * 60);
         const newEarnedAmount = (monthlySalary / 30 / 24 / 60) * minutesDiff;
         setEarnedAmount(newEarnedAmount);
-        
+
         // 检查是否达到100元的倍数
         const currentHundreds = Math.floor(newEarnedAmount / 100);
         if (currentHundreds > lastCelebration) {
@@ -42,7 +42,7 @@ export default function Home() {
 
   const handleStart = () => {
     if (monthlySalary <= 0) return;
-    
+
     setIsStarted(true);
     setStartTime(new Date());
     setEarnedAmount(0);
@@ -124,15 +124,15 @@ export default function Home() {
                   className="text-lg text-center border-2 border-indigo-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-300 h-12"
                 />
               </div>
-              <Button 
-                onClick={handleStart} 
+              <Button
+                onClick={handleStart}
                 disabled={monthlySalary <= 0}
                 className="w-full h-12 text-lg font-bold bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 border-0 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 🚀 开始计时
               </Button>
             </CardContent>
-          </Card>
+          </Card> 
         ) : (
           <div className="space-y-10">
             {/* 当前时间显示 */}
@@ -169,11 +169,26 @@ export default function Home() {
               </Card>
             </div>
 
+            {/* 广告展示区域 */}
+            <div className="text-center">
+              <Card className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-md">
+                <CardContent className="p-6">
+                  <div className="text-sm text-gray-500 mb-3">📢 广告位</div>
+                  <div className="min-h-[100px] bg-gray-200 rounded-lg flex items-center justify-center">
+                    <p className="text-gray-400 text-sm"></p>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-2">
+                    
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* 操作按钮 */}
             <div className="text-center">
-              <Button 
-                onClick={handleReset} 
-                variant="outline" 
+              <Button
+                onClick={handleReset}
+                variant="outline"
                 size="lg"
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 border-0 text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 px-8 py-3"
               >
