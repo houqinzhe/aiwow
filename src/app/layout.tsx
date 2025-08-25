@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "薪资计时器 - 实时计算您的每一分钟价值",
-  description: "输入月薪，实时计算从当前时间开始每分钟获得的薪资，达到100元时自动撒花庆祝！",
+  title: "🎣 钓鱼天气助手 - 专业的钓鱼天气分析",
+  description: "专业的钓鱼天气分析网站，帮助钓鱼爱好者把握最佳钓鱼时机，提供实时天气数据和钓鱼指数",
 };
 
 export default function RootLayout({
