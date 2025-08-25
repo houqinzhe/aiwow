@@ -839,7 +839,7 @@ export default function Home() {
                 {/* 城市搜索 */}
         <Card className="max-w-md mx-auto bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-0 shadow-xl mb-8">
           <CardHeader className="text-center">
-            <CardTitle className="text-xl font-bold text-indigo-800">选择钓鱼城市</CardTitle>
+            <CardTitle className="text-xl font-bold text-indigo-800">选择城市</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {/* 定位状态显示 */}
