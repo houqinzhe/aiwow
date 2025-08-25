@@ -75,7 +75,7 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [fishingIndex, setFishingIndex] = useState<FishingIndex | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const [currentTime, setCurrentTime] = useState<string>('--:--:--');
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [locationData, setLocationData] = useState<LocationData | null>(null);
   const [locationStatus, setLocationStatus] = useState<'idle' | 'locating' | 'success' | 'failed'>('idle');
@@ -88,9 +88,17 @@ export default function Home() {
 
   // 更新时间
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString('zh-CN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }));
+    };
+    
+    updateTime(); // 立即更新一次
+    const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -806,24 +814,7 @@ export default function Home() {
     });
   };
 
-  // 格式化当前时间
-  const formatCurrentTime = (date: Date) => {
-    return date.toLocaleTimeString('zh-CN', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-  };
 
-  // 格式化当前日期
-  const formatCurrentDate = (date: Date) => {
-    return date.toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long'
-    });
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-100 p-4">
@@ -922,12 +913,17 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <div className="text-center">
-              <div className="text-3xl font-mono font-bold text-blue-700 mb-2">
-                {formatCurrentTime(currentTime)}
-              </div>
-              <div className="text-lg text-blue-600">
-                {formatCurrentDate(currentTime)}
-              </div>
+                              <div className="text-3xl font-mono font-bold text-blue-700 mb-2">
+                  {currentTime}
+                </div>
+                <div className="text-lg text-blue-600">
+                  {new Date().toLocaleDateString('zh-CN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'long'
+                  })}
+                </div>
             </div>
           </CardContent>
         </Card>
